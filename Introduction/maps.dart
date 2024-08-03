@@ -9,10 +9,10 @@ void main() {
       2: 'ditto/back.png'
      }
   };
-
   print(pokemon);
   print('Name: ${pokemon['name']}');
   print('Abilities: ${pokemon['abilities']}');
   print('Sprites 1: ${pokemon['sprites'][1]}');
   print('Sprites 2: ${pokemon['sprites'][2]}');
+
 }
