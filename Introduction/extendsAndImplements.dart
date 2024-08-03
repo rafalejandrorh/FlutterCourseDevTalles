@@ -1,5 +1,3 @@
-
-
 void main() {
   
   final windPlant = WindPlant(initialEnergy: 100);
