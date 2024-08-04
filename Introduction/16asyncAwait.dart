@@ -5,11 +5,11 @@ void main() async {
   try {
     final value = await httpGet('http://fernando-herrera.com/cursos');
     print(value);
+    
   } catch (err) {
     print('Error: $err');
   }
 
-  
   print('Fin del Programa');
 }
 
