@@ -16,17 +16,17 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter Functions'),
-        leading: IconButton(
-          icon: const Icon(Icons.refresh_rounded), 
-          onPressed: () { 
+        leading: CustomIconButton(
+          icon: Icons.refresh_rounded, 
+          onPressed:() {
             setState(() {
               clickCounter = 0;
             });
           },
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.close), 
+          CustomIconButton(
+            icon: Icons.close, 
             onPressed: () {
               SystemNavigator.pop();
             },
@@ -51,27 +51,69 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: const StadiumBorder(),
+          CustomButtom(
+            icon: Icons.plus_one, 
             onPressed: () {
               setState(() {
                 clickCounter++;
               });
             },
-            child: const Icon(Icons.plus_one),
           ),
           const SizedBox(height: 10),
-          FloatingActionButton(
-            shape: const StadiumBorder(),
+          CustomButtom(
+            icon: Icons.exposure_minus_1_outlined,
             onPressed: () {
               setState(() {
+                if(clickCounter == 0) return;
                 clickCounter--;
               });
             },
-            child: const Icon(Icons.exposure_minus_1_outlined),
-          )
+          ),
         ],
       ),
+    );
+  }
+}
+
+class CustomIconButton extends StatelessWidget {
+
+  final IconData icon;
+  final VoidCallback? onPressed;
+
+  const CustomIconButton({
+    super.key, 
+    required this.icon, 
+    this.onPressed
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(icon), 
+      onPressed: onPressed,
+    );
+  }
+}
+
+class CustomButtom extends StatelessWidget {
+
+  final IconData icon;
+  final VoidCallback? onPressed;
+
+  const CustomButtom({
+    super.key, 
+    required this.icon, 
+    this.onPressed
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      
+      elevation: 5,
+      shape: const StadiumBorder(),
+      onPressed: onPressed,
+      child: Icon(icon),
     );
   }
 }
